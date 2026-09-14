@@ -1,0 +1,187 @@
+:root {
+  --color-text: rgb(5, 5, 5);
+  --color-bg: rgb(233, 232, 232);
+  --color-nav: linear-gradient(45deg,rgb(163, 7, 253), rgb(4, 219, 219));
+ --color-secondary: linear-gradient(-45deg,rgb(0, 110, 255), rgb(255, 0, 212));
+  --color-grey: linear-gradient(45deg, rgb(248, 248, 248),rgb(197, 197, 197));
+  --color-text-primary: rgb(172, 4, 187);
+  --color-suggestions: linear-gradient(-90deg, white, rgba(0, 204, 255, 0.521));
+  --color-blue: rgb(33, 194, 235);
+ }
+
+ .dark{
+  --color-text: rgb(5, 5, 5);
+  --color-bg: rgb(233, 232, 232);
+  --color-secondary: linear-gradient(-45deg,rgb(0, 101, 233), rgb(240, 6, 201));
+  --color-follow: red;
+ }
+
+ *{
+  margin: 0;
+  padding: 0;
+ }
+ body{
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  input{
+    outline: none;
+  }
+ }
+
+ .voltage-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 90px;
+  height: 40px;
+  border-radius: 3rem;
+}
+
+.voltage-button button {
+  pointer-events: none;
+  color: var(--color-bg);
+  width: 90px;
+  height: 40px;
+  background: linear-gradient(45deg, rgb(255, 2, 2), rgb(210, 28, 255));
+  padding: 10px 20px;
+  border-radius: 5rem;
+  border: 2px solid #5978F3;
+  /* line-height: 1em; */
+  letter-spacing: 0.075em;
+  transition: background 0.3s;
+}
+
+.voltage-button button {
+  cursor: pointer;
+  background: #0F1C53;
+}
+
+.voltage-button button + svg, .voltage-button button:hover + svg + .dots {
+  opacity: 1;
+}
+
+.voltage-button svg {
+  display: block;
+  position: absolute;
+  top: -0.75em;
+  left: -0.25em;
+  width: calc(100% + 0.5em);
+  height: calc(100% + 1.5em);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s;
+  transition-delay: 0.1s;
+}
+
+.voltage-button svg path {
+  stroke-dasharray: 100;
+  filter: url("#glow");
+}
+
+.voltage-button svg path.line-1 {
+  stroke: #f6de8d;
+  stroke-dashoffset: 0;
+  animation: spark-1 3s linear infinite;
+}
+
+.voltage-button svg path.line-2 {
+  stroke: #6bfeff;
+  stroke-dashoffset: 500;
+  animation: spark-2 3s linear infinite;
+}
+
+.voltage-button .dots {
+  opacity: 0;
+  transition: opacity 0.3s;
+  transition-delay: 0.4s;
+}
+
+.voltage-button .dots .dot {
+  width: 1rem;
+  height: 1rem;
+  background: white;
+  border-radius: 100%;
+  position: absolute;
+  opacity: 0;
+}
+
+.voltage-button .dots .dot-1 {
+  top: 0;
+  left: 20%;
+  animation: fly-up 3s linear infinite;
+}
+
+.voltage-button .dots .dot-2 {
+  top: 0;
+  left: 55%;
+  animation: fly-up 3s linear infinite;
+  animation-delay: 0.5s;
+}
+
+.voltage-button .dots .dot-3 {
+  top: 0;
+  left: 80%;
+  animation: fly-up 3s linear infinite;
+  animation-delay: 1s;
+}
+
+.voltage-button .dots .dot-4 {
+  bottom: 0;
+  left: 30%;
+  animation: fly-down 3s linear infinite;
+  animation-delay: 2.5s;
+}
+
+.voltage-button .dots .dot-5 {
+  bottom: 0;
+  left: 65%;
+  animation: fly-down 3s linear infinite;
+  animation-delay: 1.5s;
+}
+
+@keyframes spark-1 {
+  to {
+    stroke-dashoffset: -1000;
+  }
+}
+
+@keyframes spark-2 {
+  to {
+    stroke-dashoffset: -500;
+  }
+}
+
+@keyframes fly-up {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.2);
+  }
+
+  5% {
+    opacity: 1;
+    transform: translateY(-1.5rem) scale(0.4);
+  }
+
+  10%, 100% {
+    opacity: 0;
+    transform: translateY(-3rem) scale(0.2);
+  }
+}
+
+@keyframes fly-down {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.2);
+  }
+
+  5% {
+    opacity: 1;
+    transform: translateY(1.5rem) scale(0.4);
+  }
+
+  10%, 100% {
+    opacity: 0;
+    transform: translateY(3rem) scale(0.2);
+  }
+}
